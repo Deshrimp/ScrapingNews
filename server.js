@@ -12,9 +12,11 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.use(express.static("public"))
+const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost:27017/newscraperdb"
 
 mongoose.connect(
-  "mongodb://localhost:27017/newscraperdb",
+  MONGODB_URI,
   { useNewUrlParser: true }
 )
 //Route to scrape the news website
